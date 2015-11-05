@@ -10,6 +10,7 @@ namespace TBQuestGame
     {
         static void Main(string[] args)
         {
+            //This is a comment
             GameController gameController = new GameController();
         }
     }

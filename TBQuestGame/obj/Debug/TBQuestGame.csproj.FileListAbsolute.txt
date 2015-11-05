@@ -7,3 +7,4 @@ C:\Users\Taman\Google Drive\CIT195\TBQuestGame\TBQuestGame\obj\Debug\TBQuestGame
 C:\Users\Taman\Source\Repos\TBQuestGame\TBQuestGame\bin\Debug\TBQuestGame.exe.config
 C:\Users\Taman\Source\Repos\TBQuestGame\TBQuestGame\obj\Debug\TBQuestGame.exe
 C:\Users\Taman\Source\Repos\TBQuestGame\TBQuestGame\obj\Debug\TBQuestGame.pdb
+C:\Users\Calahan\Source\Repos\TBQuestGame\TBQuestGame\bin\Debug\TBQuestGame.exe.config
