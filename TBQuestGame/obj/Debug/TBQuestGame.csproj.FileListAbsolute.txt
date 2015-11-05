@@ -1,0 +1,9 @@
+C:\Users\Taman\Google Drive\CIT195\TBQuestGame\TBQuestGame\bin\Debug\TBQuestGame.exe.config
+C:\Users\Taman\Google Drive\CIT195\TBQuestGame\TBQuestGame\bin\Debug\TBQuestGame.exe
+C:\Users\Taman\Google Drive\CIT195\TBQuestGame\TBQuestGame\bin\Debug\TBQuestGame.pdb
+C:\Users\Taman\Google Drive\CIT195\TBQuestGame\TBQuestGame\obj\Debug\TBQuestGame.csprojResolveAssemblyReference.cache
+C:\Users\Taman\Google Drive\CIT195\TBQuestGame\TBQuestGame\obj\Debug\TBQuestGame.exe
+C:\Users\Taman\Google Drive\CIT195\TBQuestGame\TBQuestGame\obj\Debug\TBQuestGame.pdb
+C:\Users\Taman\Source\Repos\TBQuestGame\TBQuestGame\bin\Debug\TBQuestGame.exe.config
+C:\Users\Taman\Source\Repos\TBQuestGame\TBQuestGame\obj\Debug\TBQuestGame.exe
+C:\Users\Taman\Source\Repos\TBQuestGame\TBQuestGame\obj\Debug\TBQuestGame.pdb
