@@ -282,6 +282,31 @@ namespace TBQuestGame
             Console.CursorVisible = true;
         }
 
+        public Player.PlayerChoice GetPlayerAction()
+        {
+            string playerInput;
+            Player.PlayerChoice playerChoice = Player.PlayerChoice.None;
+
+            DisplayReset();
+
+            ShowChoices();
+
+            //DisplayPromptMessage("Enter the number for the action you would like to take: ");
+            playerInput = Console.ReadLine();
+
+
+            
+        }
+
+        public void ShowChoices()
+        {
+            Console.WriteLine("How would you like to proceed?");
+
+            //Show choices here
+            Console.WriteLine("1 - Continue Forward");
+            Console.WriteLine("2 - Turn Around and Exit");
+        }
+
         #endregion
 
     }
