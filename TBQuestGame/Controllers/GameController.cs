@@ -52,15 +52,12 @@ namespace TBQuestGame
             {
                 if (_myPlayer.inPass)
                 {
-                    Console.WriteLine("Yer in a pass, Harry!");
-                    //_consoleView.DisplayPassMessage();
-
-                    _consoleView.DisplayContinuePrompt();
+                    _consoleView.DisplayPassMessage();
+                    
                 }
                 else
                 {
-                    Console.WriteLine("There is no pass!");
-                    //_consoleView.DisplayCaveMessage();
+                    _consoleView.DisplayCaveMessage();
                 }
 
                 _playerChoice = _consoleView.GetPlayerAction();
@@ -157,29 +154,28 @@ namespace TBQuestGame
 
         private void ImplementPlayerAction(Player.PlayerChoice playerChoice)
         {
-            if (playerChoice = Player.PlayerChoice.Move)
-            switch (playerActionChoice)
+            switch (playerChoice)
             {
-                case Player.ActionChoice.None:
+                case Player.PlayerChoice.None:
                     
-                case Player.ActionChoice.QuitGame:
-                    _userConsoleView.DisplayExitPrompt();
+                case Player.PlayerChoice.Exit:
+                    _consoleView.DisplayExitPrompt();
                     break;
-                case Player.ActionChoice.Move:
+                case Player.PlayerChoice.Move:
                     // player moves to hall
-                    if (!_myPlayer.InHall)
+                    if (!_myPlayer.inPass)
                     {
-                        _myPlayer.InHall = true;
+                        _myPlayer.inPass = true;
 
-                        _userConsoleView.DisplayHallMessage();
+                        _consoleView.DisplayPassMessage();
                     }
                     // player chooses room
                     else
                     {
-                        int newRoomNumber = _userConsoleView.GetPlayerRoomNumberChoice();
+                        //int newRoomNumber = _consoleView.GetPlayerRoomNumberChoice();
 
-                        _myPlayer.CurrentRoomNumber = newRoomNumber;
-                        _myPlayer.InHall = false;
+                        //_myPlayer.CurrentRoomNumber = newRoomNumber;
+                        //_myPlayer.InHall = false;
                     }
                     break;
                 default:
