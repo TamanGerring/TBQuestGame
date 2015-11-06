@@ -13,6 +13,7 @@ namespace TBQuestGame
         Player _myPlayer;
         Pass _pass;
         NPCList _NPCList;
+        ConsoleView _consoleView;
 
         #endregion
 
@@ -41,14 +42,25 @@ namespace TBQuestGame
 
         private void PlayGame()
         {
-            ConsoleView _consoleView = new ConsoleView(_myPlayer, _pass, _NPCList);
 
             _consoleView.DisplayWelcomeScreen();
 
-            _consoleView.DisplayPlayerOptions();
+
+            while(true)
+            {
+                if (_myPlayer.inPass)
+                {
+
+                }
+                else
+                {
+
+                }
+            }
+
 
             //_consoleView.DisplayAllObjectInformation();
-
+            _consoleView.DisplayPlayerOptions();
             _consoleView.DisplayReset();
             _consoleView.DisplayExitPrompt();
         }
@@ -126,6 +138,11 @@ namespace TBQuestGame
                     NPCNumber++;
                 }
             }
+        }
+
+        private void InitializeConsoleView()
+        {
+            _consoleView = new ConsoleView(_myPlayer, _pass, _NPCList);
         }
 
         #endregion

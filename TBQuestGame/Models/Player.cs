@@ -8,6 +8,7 @@ namespace TBQuestGame
 {
     public class Player : Models.Character
     {
+        #region ENUMERABLES
         //Add enumerable for player actions
         public enum PlayerChoice
         {
@@ -15,7 +16,21 @@ namespace TBQuestGame
             Move,
             Exit
         }
+        #endregion
 
+        #region FIELDS
+        private bool _inPass;
+
+        #endregion
+
+        #region Properties
+        public bool inPass
+        {
+            get { return _inPass;  }
+            set { _inPass = value; }
+        }
+
+        #endregion
         //Display action options - Quit or Move
 
         //Get action choice

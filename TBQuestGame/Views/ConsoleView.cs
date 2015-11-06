@@ -327,8 +327,6 @@ namespace TBQuestGame
             }
         }
 
-        
-
         public Player.PlayerChoice GetPlayerAction()
         {
             string playerInput;
@@ -338,11 +336,10 @@ namespace TBQuestGame
 
             ShowChoices();
 
-            //DisplayPromptMessage("Enter the number for the action you would like to take: ");
+            DisplayPromptMessage("Enter the number for the action you would like to take: ");
             playerInput = Console.ReadLine();
 
-
-            
+            return playerChoice;
         }
 
         public void ShowChoices()
