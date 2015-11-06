@@ -8,3 +8,4 @@ C:\Users\Taman\Source\Repos\TBQuestGame\TBQuestGame\bin\Debug\TBQuestGame.exe.co
 C:\Users\Taman\Source\Repos\TBQuestGame\TBQuestGame\obj\Debug\TBQuestGame.exe
 C:\Users\Taman\Source\Repos\TBQuestGame\TBQuestGame\obj\Debug\TBQuestGame.pdb
 C:\Users\Calahan\Source\Repos\TBQuestGame\TBQuestGame\bin\Debug\TBQuestGame.exe.config
+C:\Users\Arayi\Source\Repos\TBQuestGame\TBQuestGame\bin\Debug\TBQuestGame.exe.config
