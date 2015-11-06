@@ -308,25 +308,6 @@ namespace TBQuestGame
             Console.CursorVisible = true;
         }
 
-        public void DisplayPlayerOptions()
-        {
-            DisplayMessage("You have the following actions available to you.");
-            Console.WriteLine();
-
-            foreach (Player.ActionChoice choice in Enum.GetValues(typeof(Player.ActionChoice)))
-            {
-                string actionChoiceText;
-
-                // skip the first enum value that is the default value of "none"
-                if (choice != Player.ActionChoice.None)
-                {
-                    actionChoiceText = "(" + ((int)choice) + ") " +
-                        ConsoleUtil.ToLabelFormat(choice.ToString());
-                    DisplayMessage(actionChoiceText);
-                }
-            }
-        }
-
         public Player.PlayerChoice GetPlayerAction()
         {
             string playerInput;

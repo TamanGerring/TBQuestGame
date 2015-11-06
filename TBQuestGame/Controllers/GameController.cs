@@ -14,6 +14,7 @@ namespace TBQuestGame
         Pass _pass;
         NPCList _NPCList;
         ConsoleView _consoleView;
+        Player.PlayerChoice _playerChoice;
 
         #endregion
 
@@ -38,6 +39,7 @@ namespace TBQuestGame
             InitializePlayer();
             InitializePass();
             InitializeNPCList();
+            InitializeConsoleView();
         }
 
         private void PlayGame()
@@ -50,17 +52,23 @@ namespace TBQuestGame
             {
                 if (_myPlayer.inPass)
                 {
+                    Console.WriteLine("Yer in a pass, Harry!");
+                    //_consoleView.DisplayPassMessage();
 
+                    _consoleView.DisplayContinuePrompt();
                 }
                 else
                 {
-
+                    Console.WriteLine("There is no pass!");
+                    //_consoleView.DisplayCaveMessage();
                 }
+
+                _playerChoice = _consoleView.GetPlayerAction();
             }
 
 
             //_consoleView.DisplayAllObjectInformation();
-            _consoleView.DisplayPlayerOptions();
+           // _consoleView.DisplayPlayerOptions();
             _consoleView.DisplayReset();
             _consoleView.DisplayExitPrompt();
         }
@@ -73,6 +81,8 @@ namespace TBQuestGame
                 Gender = Models.Character.GenderType.Female,
                 Race = Models.Character.RaceType.Elf
             };
+
+            _myPlayer.inPass = true;
         }
 
         private void InitializePass()
@@ -145,6 +155,38 @@ namespace TBQuestGame
             _consoleView = new ConsoleView(_myPlayer, _pass, _NPCList);
         }
 
+        private void ImplementPlayerAction(Player.PlayerChoice playerChoice)
+        {
+            if (playerChoice = Player.PlayerChoice.Move)
+            switch (playerActionChoice)
+            {
+                case Player.ActionChoice.None:
+                    
+                case Player.ActionChoice.QuitGame:
+                    _userConsoleView.DisplayExitPrompt();
+                    break;
+                case Player.ActionChoice.Move:
+                    // player moves to hall
+                    if (!_myPlayer.InHall)
+                    {
+                        _myPlayer.InHall = true;
+
+                        _userConsoleView.DisplayHallMessage();
+                    }
+                    // player chooses room
+                    else
+                    {
+                        int newRoomNumber = _userConsoleView.GetPlayerRoomNumberChoice();
+
+                        _myPlayer.CurrentRoomNumber = newRoomNumber;
+                        _myPlayer.InHall = false;
+                    }
+                    break;
+                default:
+                    throw new System.ArgumentException("This ActionChoice has not been implemnted in the switch.", "");
+                    break;
+            }
+        }
         #endregion
     }
 }
