@@ -45,7 +45,9 @@ namespace TBQuestGame
 
             _consoleView.DisplayWelcomeScreen();
 
-            _consoleView.DisplayAllObjectInformation();
+            _consoleView.DisplayPlayerOptions();
+
+            //_consoleView.DisplayAllObjectInformation();
 
             _consoleView.DisplayReset();
             _consoleView.DisplayExitPrompt();

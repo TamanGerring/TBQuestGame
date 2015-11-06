@@ -170,7 +170,7 @@ namespace TBQuestGame
                 Console.WriteLine(messageLine);
             }
         }
-        
+
         public void DisplayExitPrompt()
         {
             Console.ResetColor();
@@ -219,6 +219,32 @@ namespace TBQuestGame
             }
 
             Console.CursorVisible = true;
+        }
+
+        public void DisplayPromptMessage(string message)
+        {
+            //
+            // calculate the message area location on the console window
+            //
+            const int MESSAGE_BOX_TEXT_LENGTH = WINDOW_WIDTH - (2 * DISPLAY_HORIZONTAL_MARGIN);
+            const int MESSAGE_BOX_HORIZONTAL_MARGIN = DISPLAY_HORIZONTAL_MARGIN;
+
+            //
+            // create a list of strings to hold the wrapped text message
+            //
+            List<string> messageLines;
+
+            //
+            // call utility method to wrap text and loop through list of strings to display
+            //
+            messageLines = ConsoleUtil.Wrap(message, MESSAGE_BOX_TEXT_LENGTH, MESSAGE_BOX_HORIZONTAL_MARGIN);
+
+            for (int lineNumber = 0; lineNumber < messageLines.Count() - 1; lineNumber++)
+            {
+                Console.WriteLine(messageLines[lineNumber]);
+            }
+
+            Console.Write(messageLines[messageLines.Count() - 1]);
         }
 
         public void DisplayAllObjectInformation()
@@ -281,6 +307,27 @@ namespace TBQuestGame
             }
             Console.CursorVisible = true;
         }
+
+        public void DisplayPlayerOptions()
+        {
+            DisplayMessage("You have the following actions available to you.");
+            Console.WriteLine();
+
+            foreach (Player.ActionChoice choice in Enum.GetValues(typeof(Player.ActionChoice)))
+            {
+                string actionChoiceText;
+
+                // skip the first enum value that is the default value of "none"
+                if (choice != Player.ActionChoice.None)
+                {
+                    actionChoiceText = "(" + ((int)choice) + ") " +
+                        ConsoleUtil.ToLabelFormat(choice.ToString());
+                    DisplayMessage(actionChoiceText);
+                }
+            }
+        }
+
+        
 
         public Player.PlayerChoice GetPlayerAction()
         {

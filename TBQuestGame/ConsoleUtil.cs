@@ -75,5 +75,20 @@ namespace TBQuestGame
             string rowOfSpaces = "";
             return rowOfSpaces.PadRight(stringLength);
         }
+
+        /// <summary>
+        /// convert camelcase to all upper case and spaces
+        /// reference url - http://stackoverflow.com/questions/15458257/how-to-have-enum-values-with-spaces
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static String ToLabelFormat(String s)
+        {
+            var newStr = Regex.Replace(s, "(?<=[A-Z])(?=[A-Z][a-z])", " ");
+            newStr = Regex.Replace(newStr, "(?<=[^A-Z])(?=[A-Z])", " ");
+            //newStr = Regex.Replace(newStr, "(?<=[A-Za-z])(?=[^A-Za-z])", " ");
+
+            return newStr;
+        }
     }
 }
