@@ -61,6 +61,8 @@ namespace TBQuestGame
                 }
 
                 _playerChoice = _consoleView.GetPlayerAction();
+
+                ImplementPlayerAction(_playerChoice);
             }
 
 
@@ -172,10 +174,10 @@ namespace TBQuestGame
                     // player chooses room
                     else
                     {
-                        //int newRoomNumber = _consoleView.GetPlayerRoomNumberChoice();
+                        int newCaveNumber = _consoleView.GetPlayerRoomNumberChoice();
 
-                        //_myPlayer.CurrentRoomNumber = newRoomNumber;
-                        //_myPlayer.InHall = false;
+                        _myPlayer.CaveNumber = newCaveNumber;
+                        _myPlayer.inPass = false;
                     }
                     break;
                 default:

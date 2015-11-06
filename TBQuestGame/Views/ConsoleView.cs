@@ -343,6 +343,7 @@ namespace TBQuestGame
         public Player.PlayerChoice GetPlayerAction()
         {
             string playerInput;
+            int playerInputIndex;
             Player.PlayerChoice playerChoice = Player.PlayerChoice.None;
 
             DisplayReset();
@@ -352,6 +353,9 @@ namespace TBQuestGame
             DisplayPromptMessage("Enter the number for the action you would like to take: ");
             playerInput = Console.ReadLine();
 
+            playerInputIndex = Int32.Parse(playerInput);
+
+            playerChoice = (Player.PlayerChoice)playerInputIndex;
             return playerChoice;
         }
 
@@ -363,7 +367,71 @@ namespace TBQuestGame
             Console.WriteLine("1 - Continue Forward");
             Console.WriteLine("2 - Turn Around and Exit");
         }
-        
+
+        public int GetPlayerRoomNumberChoice()
+        {
+            int playerRoomNumberChoice = -1;
+            string playerResponse;
+            bool validPlayerResponse = false;
+
+            while (!validPlayerResponse)
+            {
+                DisplayReset();
+
+                Console.WriteLine();
+                DisplayMessage("Choose one of the following rooms.");
+                Console.WriteLine();
+
+                int displayedRoomNumber;
+
+                foreach (Cave room in _pass.Caves)
+                {
+                    // add one to the array indes to start the diplayed numbering at 1
+                    displayedRoomNumber = Array.IndexOf(_pass.Caves, room) + 1;
+
+                    DisplayMessage("(" + displayedRoomNumber + ") " + room.Name);
+                }
+
+                Console.WriteLine();
+                DisplayPromptMessage("Enter the number of the room you would like to enter: ");
+
+                playerResponse = Console.ReadLine();
+
+                // validate user's response
+                if (
+                    (Int32.TryParse(playerResponse, out playerRoomNumberChoice)) &&
+                    (playerRoomNumberChoice > 0) &&
+                    (playerRoomNumberChoice <= ControllerSettings.MAX_NUMBER_OF_CAVES)
+                    )
+                {
+
+                    // adjust the player's room number choice to match the array index
+                    playerRoomNumberChoice--;
+
+                    Console.WriteLine();
+                    DisplayMessage("You have choosen the following cave: " +
+                        _pass.Caves[playerRoomNumberChoice].Name);
+
+                    validPlayerResponse = true;
+
+                    DisplayContinuePrompt();
+                }
+                else
+                {
+                    Console.WriteLine();
+
+                    DisplayMessage("It appears that you have not provided a valid room number." +
+                        "Please use the number before each room's name to indicate your choice.");
+
+                    DisplayContinuePrompt();
+                }
+
+            }
+
+            return playerRoomNumberChoice;
+
+        }
+
         #endregion
 
     }
