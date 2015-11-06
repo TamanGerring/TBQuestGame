@@ -54,6 +54,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\ConsoleView.cs" />
+    <Compile Include="Controllers\ControllerSettings.cs" />
     <Compile Include="Views\Settings.cs" />
   </ItemGroup>
   <ItemGroup>

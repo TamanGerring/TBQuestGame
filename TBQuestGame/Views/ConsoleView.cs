@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TBQuestGame;
 
 namespace TBQuestGame
 {
@@ -247,6 +248,37 @@ namespace TBQuestGame
             Console.Write(messageLines[messageLines.Count() - 1]);
         }
 
+        public void DisplayPassMessage()
+        {
+            string hallMessage = "You stand before the treacherous Traveler's Pass. Riddled with many caves and caverns. There are " +
+               ControllerSettings.MAX_NUMBER_OF_CAVES +
+               " known caves. Each cave filled with treasures and mysteries.";
+
+            DisplayReset();
+            Console.WriteLine();
+
+            DisplayMessage(hallMessage);
+            Console.WriteLine();
+
+            for (int cave = 0; cave < ControllerSettings.MAX_NUMBER_OF_CAVES; cave++)
+            {
+                DisplayMessage(_pass.Caves[cave].Name);
+            }
+
+            DisplayContinuePrompt();
+        }
+
+        public void DisplayCaveMessage()
+        {
+            DisplayReset();
+            Console.WriteLine();
+
+            DisplayMessage(_pass.Caves[_myPlayer.CaveNumber].Description);
+            Console.WriteLine();
+
+            DisplayContinuePrompt();
+        }
+
         public void DisplayAllObjectInformation()
         {
             bool usingMenu = true;
@@ -334,7 +366,7 @@ namespace TBQuestGame
 
             DisplayReset();
 
-            ShowChoices();
+            DisplayChoices();
 
             DisplayPromptMessage("Enter the number for the action you would like to take: ");
             playerInput = Console.ReadLine();
@@ -342,7 +374,7 @@ namespace TBQuestGame
             return playerChoice;
         }
 
-        public void ShowChoices()
+        public void DisplayChoices()
         {
             Console.WriteLine("How would you like to proceed?");
 
@@ -350,7 +382,7 @@ namespace TBQuestGame
             Console.WriteLine("1 - Continue Forward");
             Console.WriteLine("2 - Turn Around and Exit");
         }
-
+        
         #endregion
 
     }
