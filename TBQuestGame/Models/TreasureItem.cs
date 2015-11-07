@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace TBQuestGame.Models
 {
-    class TreasureItem
+    public class TreasureItem
     {
         #region FIELDS
 
         private int _rarity;
         private string _name;
         private bool _isShiny;
+        private List<string> _nameList = new List<string> { "Lucky Medallion", "A Rock", "Gold Coin", "Rusty Spork", "Greatsword of Slaying", "A Twig" };
 
         #endregion
 

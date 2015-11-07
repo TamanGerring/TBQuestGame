@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TBQuestGame.Models
 {
-    class Treasure
+    public class Treasure
     {
         #region FIELDS
 
@@ -14,6 +14,8 @@ namespace TBQuestGame.Models
         private int _numItems;
         private bool _isLocked;
         private List<TreasureItem> _heldItems = new List<TreasureItem>();
+        private List<TreasureItem> _genItems = new List<TreasureItem>();
+
 
         #endregion
 
@@ -56,9 +58,24 @@ namespace TBQuestGame.Models
 
         #region METHODS
 
+        public void GenerateItems()
+        {
+            Random rand = new Random();
+
+            for (int i = 0; i < rand.Next(20); i++)
+            {
+
+            }
+        }
+
         public void PopulateContainer()
         {
 
+            Random rand = new Random();
+
+            for (int i = 0; i < _numItems; i++)
+            {
+            }
         }
 
         public void OpenContainer()

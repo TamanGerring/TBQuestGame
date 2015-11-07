@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TBQuestGame.Models;
 
 namespace TBQuestGame
 {
@@ -14,6 +15,7 @@ namespace TBQuestGame
         Pass _pass;
         NPCList _NPCList;
         ConsoleView _consoleView;
+        Treasure _chest;
         Player.PlayerChoice _playerChoice;
 
         #endregion
@@ -152,6 +154,33 @@ namespace TBQuestGame
         private void InitializeConsoleView()
         {
             _consoleView = new ConsoleView(_myPlayer, _pass, _NPCList);
+        }
+
+        private void InitializeLoot()
+        {
+            _chest = new Treasure();
+            Random rand = new Random();
+            string name;
+            int quality;
+            bool isShiny;
+            List<string> _nameList = new List<string> { "Lucky Medallion", "A Rock", "Gold Coin", "Rusty Spork", "Greatsword of Slaying", "A Twig" };
+
+            for (int i = 0; i < rand.Next(20); i++)
+            {
+                name = _nameList[rand.Next(_nameList.Count - 1)];
+                quality = rand.Next(3);
+
+                if (rand.Next(0, 2) == 0)
+                {
+                    isShiny = false;
+                }
+                else
+                {
+                    isShiny = true;
+                }
+
+                _chest.HeldItems.Add(new TreasureItem(name, quality, isShiny));
+            }
         }
 
         private void ImplementPlayerAction(Player.PlayerChoice playerChoice)
