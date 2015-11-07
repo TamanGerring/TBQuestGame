@@ -51,6 +51,8 @@
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\NPC.cs" />
     <Compile Include="Models\Pass.cs" />
+    <Compile Include="Models\Treasure.cs" />
+    <Compile Include="Models\TreasureItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\ConsoleView.cs" />

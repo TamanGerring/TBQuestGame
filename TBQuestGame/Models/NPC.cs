@@ -16,5 +16,9 @@
         //    set { _enemyType = value; }
         //}
 
+        public void TalkTo()
+        {
+
+        }
     }
 }
