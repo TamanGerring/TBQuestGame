@@ -41,6 +41,7 @@ namespace TBQuestGame
             InitializePlayer();
             InitializePass();
             InitializeNPCList();
+            InitializeLoot();
             InitializeConsoleView();
         }
 
@@ -158,29 +159,21 @@ namespace TBQuestGame
 
         private void InitializeLoot()
         {
-            _chest = new Treasure();
             Random rand = new Random();
-            string name;
-            int quality;
-            bool isShiny;
-            List<string> _nameList = new List<string> { "Lucky Medallion", "A Rock", "Gold Coin", "Rusty Spork", "Greatsword of Slaying", "A Twig" };
+            bool isLocked;
 
-            for (int i = 0; i < rand.Next(20); i++)
+            if (rand.Next(0, 2) == 0)
             {
-                name = _nameList[rand.Next(_nameList.Count - 1)];
-                quality = rand.Next(3);
-
-                if (rand.Next(0, 2) == 0)
-                {
-                    isShiny = false;
-                }
-                else
-                {
-                    isShiny = true;
-                }
-
-                _chest.HeldItems.Add(new TreasureItem(name, quality, isShiny));
+                isLocked = false;
             }
+            else
+            {
+                isLocked = true;
+            }
+
+            _chest = new Treasure(rand.Next(1, 11), isLocked);
+
+            _chest.GenerateItems();
         }
 
         private void ImplementPlayerAction(Player.PlayerChoice playerChoice)
