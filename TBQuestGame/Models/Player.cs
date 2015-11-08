@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TBQuestGame.Models;
 
 namespace TBQuestGame
 {
@@ -20,6 +21,7 @@ namespace TBQuestGame
 
         #region FIELDS
         private bool _inPass;
+        private List<TreasureItem> _inventory = new List<TreasureItem>();
 
         #endregion
 
@@ -30,6 +32,11 @@ namespace TBQuestGame
             set { _inPass = value; }
         }
 
+        public List<TreasureItem> Inventory
+        {
+            get { return _inventory; }
+            set { _inventory = value; }
+        }
         #endregion
         //Display action options - Quit or Move
 

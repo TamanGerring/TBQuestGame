@@ -96,9 +96,16 @@ namespace TBQuestGame.Models
             }
         }
 
-        public void OpenContainer()
+        public List<TreasureItem> OpenContainer(TreasureItem Key = null)
         {
-
+            if(Key != null)
+            {
+                return _heldItems;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         #endregion
