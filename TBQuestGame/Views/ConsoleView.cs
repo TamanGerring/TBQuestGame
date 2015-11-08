@@ -361,11 +361,11 @@ namespace TBQuestGame
 
         public void DisplayChoices()
         {
-            Console.WriteLine("How would you like to proceed?");
+            DisplayMessage("How would you like to proceed?");
 
             //Show choices here
-            Console.WriteLine("1 - Continue Forward");
-            Console.WriteLine("2 - Turn Around and Exit");
+            DisplayMessage("1 - Continue Forward");
+            DisplayMessage("2 - Turn Around and Exit");
         }
 
         public int GetPlayerRoomNumberChoice()

@@ -16,3 +16,9 @@ C:\Users\Arayi\Source\Repos\TBQuestGame\TBQuestGame\obj\Debug\TBQuestGame.exe
 C:\Users\Arayi\Source\Repos\TBQuestGame\TBQuestGame\obj\Debug\TBQuestGame.pdb
 C:\Users\taman\Source\Repos\TBQuestGame2\TBQuestGame\bin\Debug\TBQuestGame.exe.config
 C:\Users\taman\Source\Repos\TBQuestGame2\TBQuestGame\obj\Debug\TBQuestGame.csprojResolveAssemblyReference.cache
+C:\Users\taman\Documents\TBQuestGame\TBQuestGame\bin\Debug\TBQuestGame.exe.config
+C:\Users\taman\Documents\TBQuestGame\TBQuestGame\bin\Debug\TBQuestGame.exe
+C:\Users\taman\Documents\TBQuestGame\TBQuestGame\bin\Debug\TBQuestGame.pdb
+C:\Users\taman\Documents\TBQuestGame\TBQuestGame\obj\Debug\TBQuestGame.csprojResolveAssemblyReference.cache
+C:\Users\taman\Documents\TBQuestGame\TBQuestGame\obj\Debug\TBQuestGame.exe
+C:\Users\taman\Documents\TBQuestGame\TBQuestGame\obj\Debug\TBQuestGame.pdb
