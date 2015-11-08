@@ -1,24 +1,16 @@
-﻿namespace TBQuestGame
+﻿using System;
+using TBQuestGame;
+
+namespace TBQuestGame
 {
     public class NPC : Models.Character
     {
-        //public enum EnemyType
-        //{
-        //    Goblin,
-        //    Troll
-        //}
 
-        //private EnemyType _enemyType;
-
-        //public EnemyType Enemy
-        //{
-        //    get { return _enemyType; }
-        //    set { _enemyType = value; }
-        //}
+        ConsoleView _consoleView;
 
         public void TalkTo()
         {
-
+            _consoleView.DisplayMessage("Hi.");
         }
     }
 }

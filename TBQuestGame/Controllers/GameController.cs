@@ -108,11 +108,11 @@ namespace TBQuestGame
             _pass.Caves[1].Type = Cave.TypeName.Cave;
             _pass.Caves[1].IsLighted = true;
             _pass.Caves[1].CanEnter = true;
-            _pass.Caves[1].CaveNPC = new NPC
+            //_pass.Caves[1].CaveNPC = new List<NPC>()
             {
-                Name = "Gork the Stinky",
-                Gender = NPC.GenderType.Male,
-                Race = NPC.RaceType.Goblin,
+                //Name = "Gork the Stinky",
+                //Gender = NPC.GenderType.Male,
+                //Race = NPC.RaceType.Goblin,
             };
             //_pass.Caves[1].CaveNPC = new NPC
             //{
@@ -203,8 +203,7 @@ namespace TBQuestGame
                     }
                     break;
                 default:
-                    throw new System.ArgumentException("This ActionChoice has not been implemnted in the switch.", "");
-                    break;
+                    throw new System.ArgumentException("This ActionChoice has not been implemented in the switch.", "");
             }
         }
         #endregion

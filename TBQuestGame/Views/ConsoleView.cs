@@ -386,7 +386,7 @@ namespace TBQuestGame
 
                 foreach (Cave room in _pass.Caves)
                 {
-                    // add one to the array indes to start the diplayed numbering at 1
+                    // add one to the array index to start the displayed numbering at 1
                     displayedRoomNumber = Array.IndexOf(_pass.Caves, room) + 1;
 
                     DisplayMessage("(" + displayedRoomNumber + ") " + room.Name);
@@ -409,7 +409,7 @@ namespace TBQuestGame
                     playerRoomNumberChoice--;
 
                     Console.WriteLine();
-                    DisplayMessage("You have choosen the following cave: " +
+                    DisplayMessage("You have chosen the following cave: " +
                         _pass.Caves[playerRoomNumberChoice].Name);
 
                     validPlayerResponse = true;
