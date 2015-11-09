@@ -39,8 +39,8 @@ namespace TBQuestGame
         private void SetupGame()
         {
             InitializePlayer();
-            InitializePass();
             InitializeNPCList();
+            InitializePass();
             InitializeLoot();
             InitializeConsoleView();
         }
@@ -146,6 +146,11 @@ namespace TBQuestGame
                 Gender = Character.GenderType.None,
                 Race = NPC.RaceType.Beholder,
             };
+
+            for (int i = 0; i < _pass.Caves.Length - 1; i++)
+            {
+                _NPCList.NPCs.Add(_pass.Caves[i].CaveNPC);
+            }
         }
 
         private void InitializeNPCList()
