@@ -51,12 +51,12 @@ namespace TBQuestGame
             _consoleView.DisplayWelcomeScreen();
 
 
-            while(true)
+            while (true)
             {
                 if (_myPlayer.inPass)
                 {
                     _consoleView.DisplayPassMessage();
-                    
+
                 }
                 else
                 {
@@ -114,12 +114,12 @@ namespace TBQuestGame
                 //Gender = NPC.GenderType.Male,
                 //Race = NPC.RaceType.Goblin,
             };
-            //_pass.Caves[1].CaveNPC = new NPC
-            //{
-            //    Name = "Snouz the Sneak",
-            //    Gender = NPC.GenderType.Male,
-            //    Race = NPC.RaceType.Goblin,
-            //};
+            _pass.Caves[1].CaveNPC = new NPC
+            {
+                Name = "Snouz the Sneak",
+                Gender = NPC.GenderType.Male,
+                Race = NPC.RaceType.Goblin,
+            };
 
 
             _pass.Caves[2].Name = "Abandoned Iron Mine";
@@ -127,6 +127,12 @@ namespace TBQuestGame
             _pass.Caves[2].Type = Cave.TypeName.Mine;
             _pass.Caves[2].IsLighted = false;
             _pass.Caves[2].CanEnter = true;
+            _pass.Caves[2].CaveNPC = new NPC
+            {
+                Name = "Ellehcem the Short",
+                Gender = NPC.GenderType.Female,
+                Race = NPC.RaceType.Troll,
+            };
 
 
             _pass.Caves[3].Name = "Beholder's Cavern";
@@ -134,6 +140,12 @@ namespace TBQuestGame
             _pass.Caves[3].Type = Cave.TypeName.Cavern;
             _pass.Caves[3].IsLighted = false;
             _pass.Caves[3].CanEnter = false;
+            _pass.Caves[3].CaveNPC = new NPC
+            {
+                Name = "Alemap",
+                Gender = Character.GenderType.None,
+                Race = NPC.RaceType.Beholder,
+            };
         }
 
         private void InitializeNPCList()
@@ -181,7 +193,7 @@ namespace TBQuestGame
             switch (playerChoice)
             {
                 case Player.PlayerChoice.None:
-                    
+
                 case Player.PlayerChoice.Exit:
                     _consoleView.DisplayExitPrompt();
                     break;

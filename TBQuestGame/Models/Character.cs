@@ -13,7 +13,8 @@ namespace TBQuestGame.Models
         public enum GenderType
         {
             Male,
-            Female
+            Female,
+            None
         }
 
         public enum RaceType
@@ -21,7 +22,9 @@ namespace TBQuestGame.Models
             Human,
             Elf,
             Dwarf,
-            Goblin
+            Goblin,
+            Troll,
+            Beholder
         } 
 
         #endregion
