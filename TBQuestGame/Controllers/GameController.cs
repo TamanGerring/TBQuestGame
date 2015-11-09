@@ -231,7 +231,7 @@ namespace TBQuestGame
                 case Player.PlayerChoice.Open:
                     if (_chest.CaveNumber == _myPlayer.CaveNumber)
                     {
-                        TreasureItem key = _myPlayer.Inventory.FirstOrDefault(key => key.Name == "Beholder's Key");
+                        TreasureItem key = _myPlayer.Inventory.FirstOrDefault(item => item.Name == "Beholder's Key");
 
                         _chest.OpenContainer(key);
                     }
