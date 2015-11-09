@@ -70,9 +70,9 @@ namespace TBQuestGame
 
 
             //_consoleView.DisplayAllObjectInformation();
-           // _consoleView.DisplayPlayerOptions();
-            _consoleView.DisplayReset();
-            _consoleView.DisplayExitPrompt();
+            // _consoleView.DisplayPlayerOptions();
+            //_consoleView.DisplayReset();
+            //_consoleView.DisplayExitPrompt();
         }
 
         private void InitializePlayer()
