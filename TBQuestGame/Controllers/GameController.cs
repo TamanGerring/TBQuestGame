@@ -39,7 +39,7 @@ namespace TBQuestGame
         private void SetupGame()
         {
             InitializePlayer();
-            InitializeNPCList();
+            InitializeNPCs();
             InitializePass();
             InitializeLoot();
             InitializeConsoleView();
@@ -109,17 +109,12 @@ namespace TBQuestGame
             _pass.Caves[1].IsLighted = true;
             _pass.Caves[1].CanEnter = true;
             //_pass.Caves[1].CaveNPC = new List<NPC>()
-            {
+            //{
                 //Name = "Gork the Stinky",
                 //Gender = NPC.GenderType.Male,
                 //Race = NPC.RaceType.Goblin,
-            };
-            _pass.Caves[1].CaveNPC = new NPC
-            {
-                Name = "Snouz the Sneak",
-                Gender = NPC.GenderType.Male,
-                Race = NPC.RaceType.Goblin,
-            };
+            //};
+            _pass.Caves[1].CaveNPC = _NPCList.NPCs[2];
 
 
             _pass.Caves[2].Name = "Abandoned Iron Mine";
@@ -127,12 +122,7 @@ namespace TBQuestGame
             _pass.Caves[2].Type = Cave.TypeName.Mine;
             _pass.Caves[2].IsLighted = false;
             _pass.Caves[2].CanEnter = true;
-            _pass.Caves[2].CaveNPC = new NPC
-            {
-                Name = "Ellehcem the Short",
-                Gender = NPC.GenderType.Female,
-                Race = NPC.RaceType.Troll,
-            };
+            _pass.Caves[2].CaveNPC = _NPCList.NPCs[1];
 
 
             _pass.Caves[3].Name = "Beholder's Cavern";
@@ -140,33 +130,27 @@ namespace TBQuestGame
             _pass.Caves[3].Type = Cave.TypeName.Cavern;
             _pass.Caves[3].IsLighted = false;
             _pass.Caves[3].CanEnter = false;
-            _pass.Caves[3].CaveNPC = new NPC
-            {
-                Name = "Alemap",
-                Gender = Character.GenderType.None,
-                Race = NPC.RaceType.Beholder,
-            };
-
-            for (int i = 0; i < _pass.Caves.Length - 1; i++)
-            {
-                _NPCList.NPCs.Add(_pass.Caves[i].CaveNPC);
-            }
+            _pass.Caves[3].CaveNPC = _NPCList.NPCs[0];
         }
 
-        private void InitializeNPCList()
+        private void InitializeNPCs()
         {
             _NPCList = new NPCList();
 
-            int NPCNumber = 0;
+            _NPCList.NPCs.Add(new NPC("Alemap", NPC.GenderType.None, NPC.RaceType.Beholder, 3));
+            _NPCList.NPCs.Add(new NPC("Ellehcem the Short", NPC.GenderType.Female, NPC.RaceType.Troll, 2));
+            _NPCList.NPCs.Add(new NPC("Snouz the Sneak", NPC.GenderType.Male, NPC.RaceType.Goblin, 1));
 
-            foreach (Cave cave in _pass.Caves)
-            {
-                if (cave.CaveNPC != null)
-                {
-                    _NPCList.NPCs[NPCNumber] = cave.CaveNPC;
-                    NPCNumber++;
-                }
-            }
+            //int NPCNumber = 0;
+
+            //foreach (Cave cave in _pass.Caves)
+            //{
+            //    if (cave.CaveNPC != null)
+            //    {
+            //        _NPCList.NPCs[NPCNumber] = cave.CaveNPC;
+            //        NPCNumber++;
+            //    }
+            //}
         }
 
         private void InitializeConsoleView()
@@ -181,10 +165,15 @@ namespace TBQuestGame
             _chest = new Treasure(rand.Next(1, 11));
 
             _chest.GenerateItems();
+            _chest.PopulateContainer();
+
+            _NPCList.NPCs[2].Inventory.Add(_chest.Keys[0]);
         }
 
         private void ImplementPlayerAction(Player.PlayerChoice playerChoice)
         {
+            _consoleView.DisplayMessage("");
+
             switch (playerChoice)
             {
                 case Player.PlayerChoice.None:
@@ -194,22 +183,23 @@ namespace TBQuestGame
                     break;
                 case Player.PlayerChoice.Move:
                     // player moves to hall
-                    if (!_myPlayer.inPass)
-                    {
-                        _myPlayer.inPass = true;
+                    //if (!_myPlayer.inPass)
+                    //{
+                    //    _myPlayer.inPass = true;
 
-                        _consoleView.DisplayPassMessage();
-                    }
-                    // player chooses room
-                    else
-                    {
+                    //    _consoleView.DisplayPassMessage();
+                    //}
+                    //// player chooses room
+                    //else
+                    //{
                         int newCaveNumber = _consoleView.GetPlayerRoomNumberChoice();
 
                         _myPlayer.CaveNumber = newCaveNumber;
                         _myPlayer.inPass = false;
-                    }
+                    //}
                     break;
                 case Player.PlayerChoice.Search:
+
                     bool treasureFound = false, 
                          npcFound = false;
 
@@ -234,11 +224,30 @@ namespace TBQuestGame
                     }
                     break;
                 case Player.PlayerChoice.Open:
+                    List<TreasureItem> loot = new List<TreasureItem>();
+
                     if (_chest.CaveNumber == _myPlayer.CaveNumber)
                     {
                         TreasureItem key = _myPlayer.Inventory.FirstOrDefault(item => item.Name == "Beholder's Key");
 
-                        _chest.OpenContainer(key);
+                        loot = _chest.OpenContainer(key);
+
+                        if (loot == null)
+                        {
+                            _consoleView.DisplayMessage("You need a key to open this chest!");
+
+                            _consoleView.DisplayContinuePrompt();
+                        }
+                        else
+                        {
+                            foreach (TreasureItem item in loot)
+                            {
+                                _consoleView.DisplayMessage("Found " + item.Name);
+                            }
+
+                            _consoleView.DisplayMessage("Congratulations on beating the game!");
+                            _consoleView.DisplayExitPrompt();
+                        }
                     }
                     else
                     {
@@ -251,8 +260,14 @@ namespace TBQuestGame
                     {
                         if (npc.CaveNumber == _myPlayer.CaveNumber)
                         { 
-                            npc.TalkTo();
+                            _consoleView.DisplayMessage(npc.TalkTo(npc));
                             i = 1;
+
+                            if (npc.Inventory.Contains(_chest.Keys[0]))
+                            {
+                                _myPlayer.Inventory.Add(_chest.Keys[0]);
+                                npc.Inventory.Remove(_chest.Keys[0]);
+                            }
                         }
                     }
 
@@ -264,6 +279,8 @@ namespace TBQuestGame
                 default:
                     throw new System.ArgumentException("This ActionChoice has not been implemented in the switch.", "");
             }
+
+            _consoleView.DisplayContinuePrompt();
         }
         #endregion
     }

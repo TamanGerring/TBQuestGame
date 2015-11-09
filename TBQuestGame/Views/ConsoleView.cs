@@ -137,7 +137,7 @@ namespace TBQuestGame
                 DisplayCaveInformation(caveNumber);
             }
 
-            DisplayContinuePrompt();
+            //DisplayContinuePrompt();
         }
 
         public void DisplayCaveInformation(int caveNumber)
@@ -275,8 +275,6 @@ namespace TBQuestGame
 
             DisplayMessage(_pass.Caves[_myPlayer.CaveNumber].Description);
             Console.WriteLine();
-
-            DisplayContinuePrompt();
         }
 
         public void DisplayAllObjectInformation()
@@ -350,7 +348,7 @@ namespace TBQuestGame
 
             DisplayChoices();
 
-            DisplayPromptMessage("Enter the number for the action you would like to take: ");
+            DisplayPromptMessage("Enter the number for the action you would like to take:");
             playerInput = Console.ReadLine();
 
             playerInputIndex = Int32.Parse(playerInput);
@@ -417,7 +415,7 @@ namespace TBQuestGame
 
                     validPlayerResponse = true;
 
-                    DisplayContinuePrompt();
+                    //DisplayContinuePrompt();
                 }
                 else
                 {

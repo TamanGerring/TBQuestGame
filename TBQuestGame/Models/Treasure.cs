@@ -52,6 +52,12 @@ namespace TBQuestGame.Models
             set { caveNumber = value; }
         }
 
+        public List<TreasureItem> Keys
+        {
+            get { return _keys; }
+            set { _keys = value; }
+        }
+
         #endregion
 
         #region CONSTRUCTORS
@@ -100,7 +106,7 @@ namespace TBQuestGame.Models
 
             for (int i = 0; i < _numItems; i++)
             {
-                _heldItems.Add(_genItems[rand.Next(21)]);
+                _heldItems.Add(_genItems[rand.Next(20)]);
             }
         }
 
