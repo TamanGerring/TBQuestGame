@@ -365,7 +365,10 @@ namespace TBQuestGame
 
             //Show choices here
             DisplayMessage("1 - Continue Forward");
-            DisplayMessage("2 - Turn Around and Exit");
+            DisplayMessage("2 - Turn Around and Leave the Pass");
+            DisplayMessage("3 - Search the Area");
+            DisplayMessage("4 - Open Chest");
+            DisplayMessage("5 - Talk");
         }
 
         public int GetPlayerRoomNumberChoice()

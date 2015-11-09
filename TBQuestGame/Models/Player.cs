@@ -15,7 +15,10 @@ namespace TBQuestGame
         {
             None,
             Move,
-            Exit
+            Exit,
+            Search,
+            Open,
+            Talk
         }
         #endregion
 
