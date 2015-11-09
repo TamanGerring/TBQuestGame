@@ -12,10 +12,11 @@ namespace TBQuestGame.Models
 
         private string _container = "Chest";
         private int _numItems;
-        private bool _isLocked;
+        private bool _isLocked = true;
         private List<TreasureItem> _heldItems = new List<TreasureItem>();
         private List<TreasureItem> _genItems = new List<TreasureItem>();
-
+        private List<TreasureItem> _keys = new List<TreasureItem>();
+        private int caveNumber = 3;
 
         #endregion
 
@@ -45,14 +46,19 @@ namespace TBQuestGame.Models
             set { _heldItems = value; }
         }
 
+        public int CaveNumber
+        {
+            get { return caveNumber; }
+            set { caveNumber = value; }
+        }
+
         #endregion
 
         #region CONSTRUCTORS
 
-        public Treasure(int numberOfItems, bool isLocked)
+        public Treasure(int numberOfItems)
         {
             _numItems = numberOfItems;
-            _isLocked = isLocked;
         }
 
         #endregion
@@ -83,6 +89,8 @@ namespace TBQuestGame.Models
 
                 _genItems.Add(new TreasureItem(name, quality, isShiny));
             }
+
+            _keys.Add(new TreasureItem("Beholder's Key", 4, true));
         }
 
         public void PopulateContainer()

@@ -160,18 +160,8 @@ namespace TBQuestGame
         private void InitializeLoot()
         {
             Random rand = new Random();
-            bool isLocked;
 
-            if (rand.Next(0, 2) == 0)
-            {
-                isLocked = false;
-            }
-            else
-            {
-                isLocked = true;
-            }
-
-            _chest = new Treasure(rand.Next(1, 11), isLocked);
+            _chest = new Treasure(rand.Next(1, 11));
 
             _chest.GenerateItems();
         }
@@ -200,6 +190,58 @@ namespace TBQuestGame
 
                         _myPlayer.CaveNumber = newCaveNumber;
                         _myPlayer.inPass = false;
+                    }
+                    break;
+                case Player.PlayerChoice.Search:
+                    bool treasureFound = false, 
+                         npcFound = false;
+
+                    if (_myPlayer.CaveNumber == _chest.CaveNumber)
+                    {
+                        _consoleView.DisplayMessage("Treasure found!");
+                        treasureFound = true;
+                    }
+
+                    foreach (NPC npc in _NPCList.NPCs)
+                    {
+                        if (npc.CaveNumber == _myPlayer.CaveNumber)
+                        {
+                            _consoleView.DisplayMessage(npc.Name + " the " + npc.Gender + " " + npc.Race + " has been found!");
+                            npcFound = true;
+                        }
+                    }
+
+                    if (treasureFound == false && npcFound == false)
+                    {
+                        _consoleView.DisplayMessage("There is nothing here...");
+                    }
+                    break;
+                case Player.PlayerChoice.Open:
+                    if (_chest.CaveNumber == _myPlayer.CaveNumber)
+                    {
+                        TreasureItem key = _myPlayer.Inventory.FirstOrDefault(key => key.Name == "Beholder's Key");
+
+                        _chest.OpenContainer(key);
+                    }
+                    else
+                    {
+                        _consoleView.DisplayMessage("There is nothing here to open...");
+                    }
+                    break;
+                case Player.PlayerChoice.Talk:
+                    int i = 0;
+                    foreach (NPC npc in _NPCList.NPCs)
+                    {
+                        if (npc.CaveNumber == _myPlayer.CaveNumber)
+                        { 
+                            npc.TalkTo();
+                            i = 1;
+                        }
+                    }
+
+                    if (i == 0)
+                    {
+                        _consoleView.DisplayMessage("There is no one here...");
                     }
                     break;
                 default:
